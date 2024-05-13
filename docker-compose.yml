@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  django:
+    build: .
+    ports:
+      - "8002:8000"
+    volumes:
+      - .:/app
+    command: python manage.py runserver 0.0.0.0:8000
+    depends_on:
+      - db
+    environment:
+      - DEBUG=True
+      - SECRET_KEY=simplejack
+      - DATABASE_URL=postgres://postgres:password@db:5432/clamav
+
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: simplejack
+      POSTGRES_DB: clamav
