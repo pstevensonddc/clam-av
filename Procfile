@@ -1,1 +1,1 @@
-web: gunicorn main:app
+web: gunicorn clam_av.wsgi:application
