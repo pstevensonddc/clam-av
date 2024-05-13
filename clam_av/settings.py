@@ -14,7 +14,9 @@ SECRET_KEY = 'django-insecure-i!w43e5b!qgip#iow(nl2ioyz$wnz24n!vgzrm!i27&6(g9p^f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'sea-lion-app-hh6ay.ondigitalocean.app',
+]
 
 
 # Application definition
