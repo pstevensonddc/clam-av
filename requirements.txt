@@ -1,5 +1,5 @@
 pip~=21.2.4
 Flask==2.1.0
 clamav
-cffi
+cffi==1.15.0
 gunicorn
