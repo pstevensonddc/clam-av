@@ -10,7 +10,6 @@ REST_FRAMEWORK = {
     ]
 }
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
@@ -23,7 +22,6 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'sea-lion-app-hh6ay.ondigitalocean.app',
 ]
-
 
 # Application definition
 
@@ -66,7 +64,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'clam_av.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
@@ -76,7 +73,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -96,7 +92,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -108,15 +103,32 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+AWS_ACCESS_KEY_ID = 'DO003LTRL9JK3Y662NT6'
+AWS_SECRET_ACCESS_KEY = 'dymtF7IS5qrgM6RC/QQtwWoZAQb9XqYbSNBffOmGEAk'
+AWS_STORAGE_BUCKET_NAME = 'production-test'
+AWS_S3_REGION_NAME = 'ams3'  # e.g., 'us-east-1'
+
+# Use DigitalOcean Spaces endpoint URL
+AWS_S3_ENDPOINT_URL = 'https://ams3.digitaloceanspaces.com'
+
+# Set the static and media URLs
+STATIC_URL = f'{AWS_S3_ENDPOINT_URL}/{AWS_STORAGE_BUCKET_NAME}/static/'
+MEDIA_URL = f'{AWS_S3_ENDPOINT_URL}/{AWS_STORAGE_BUCKET_NAME}/media/'
+
+# Tell Django to use S3 storage backend for static and media files
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+STATIC_ROOT = 'static/'
+MEDIA_ROOT = 'media/'
