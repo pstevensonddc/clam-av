@@ -3,3 +3,4 @@ Django==3.2.12
 pyclamd==0.4.0
 gunicorn==20.1.0
 natsort
+djangorestframework==3.13.0
