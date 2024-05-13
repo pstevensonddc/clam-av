@@ -1,9 +1,12 @@
-import logging
+from flask import Flask
+
+app = Flask(__name__)
 
 
-def print_hi(name):
-    print(f'Hi, {name}')
+@app.route('/')
+def index():
+    return "Hello, World! This is your main page."
 
 
-if __name__ == '__main__':
-    print_hi('PyCharm')
+if __name__ == "__main__":
+    app.run(debug=True)
